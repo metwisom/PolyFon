@@ -1,3 +1,5 @@
+import {Dists} from "./types";
+
 class Peak {
 
     private readonly axisX;
@@ -27,6 +29,16 @@ class Peak {
             x: this.axisX + Math.cos(this.step) * this.radius,
             y: this.axisY + Math.sin(this.step) * this.radius
         }
+    }
+
+    getDistance(x:number,y:number){
+        return Math.sqrt(Math.pow(x-this.axisX,2) + Math.pow(y - this.axisY,2));
+    }
+
+    getNearest(peak_list:Peak[]){
+        return peak_list
+            .map(item => <Dists>{dist: item.getDistance(this.axisX, this.axisY), item})
+            .sort((a, b) => a.dist - b.dist)[0].item
     }
 
 }
