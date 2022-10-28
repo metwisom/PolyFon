@@ -1,8 +1,8 @@
 import Peak from "./Peak";
 
-type Dists = {
+type Distance = {
     dist: number;
     item: Peak;
 }
 
-export {Dists};
+export {Distance};
